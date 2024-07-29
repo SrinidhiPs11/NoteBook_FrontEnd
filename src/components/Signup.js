@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { AlertContext } from '../context/CreateContext';
 import Navbar from './Navbar';
 const Signup = () => {
-  const host = "https://notebook-1-2l3b.onrender.com"
+  const host = "https://notebook-backend-bbj6.onrender.com"
   
   const context = useContext(AlertContext);
   const { showAlert } = context;

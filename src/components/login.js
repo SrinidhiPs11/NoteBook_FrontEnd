@@ -4,7 +4,7 @@ import { AlertContext } from '../context/CreateContext';
 import Navbar from './Navbar';
 
 const Login = () => {
-    const host = "https://notebook-1-2l3b.onrender.com"
+    const host = "https://notebook-backend-bbj6.onrender.com"
     const context = useContext(AlertContext);
     const { showAlert } = context;
     const navigate = useNavigate();

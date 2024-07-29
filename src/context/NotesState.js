@@ -4,7 +4,7 @@ import {NoteContext} from "./CreateContext";
 const NoteState = (props) => {
   const notesInitial = []
   const [notes, setNotes] = useState(notesInitial)
-  const host = "https://notebook-1-2l3b.onrender.com";
+  const host = "https://notebook-backend-bbj6.onrender.com";
 
 
 
