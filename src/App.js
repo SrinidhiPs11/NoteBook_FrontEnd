@@ -21,6 +21,7 @@ function App() {
       <Router>
         <AlertProvider>
         <NoteState>
+          <Alert/>
           <Routes>
             <Route exact path="/" Component={Home} />
             <Route exact path="/about" Component={About} />
@@ -28,7 +29,6 @@ function App() {
             <Route exact path="/signup" Component={Signup} />
             <Route path="*" Component={NotFound} /> 
             </Routes>
-          <Alert/>
         </NoteState>
         </AlertProvider>
       </Router >

@@ -6,7 +6,8 @@ const About = () => {
     return (
         <>
             <Navbar />
-            <div className="container mx-auto px-4 py-8">
+            <div className='h-screen bg-gray-100 flex justify-between flex-col '>
+            <div className="px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">About Notebook</h1>
                 <p className="mb-6">Notebook is a powerful and user-friendly note-taking application designed to help you organize your thoughts, ideas, and information efficiently.</p>
                 
@@ -28,6 +29,7 @@ const About = () => {
                     <p>© {new Date().getFullYear()} Notebook. All rights reserved.</p>
                 </div>
             </footer>
+            </div>
         </>
     )
 }

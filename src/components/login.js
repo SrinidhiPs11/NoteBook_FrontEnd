@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { Route, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 import { AlertContext } from '../context/CreateContext';
 import Navbar from './Navbar';
 
@@ -9,25 +9,36 @@ const Login = () => {
     const { showAlert } = context;
     const navigate = useNavigate();
     const [credentials, setCredentials] = useState({ email: "", password: "" });
+    const [isLoading, setIsLoading] = useState(false);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await fetch(`${host}/api/auth/login`, {
-            method: "POST",
-            headers: {
-                "Content-Type": 'application/json'
-            },
-            body: JSON.stringify({ email: credentials.email, password: credentials.password })
-        });
-        const json = await response.json();
+        setIsLoading(true);
+        try {
+            const response = await fetch(`${host}/api/auth/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": 'application/json'
+                },
+                body: JSON.stringify({ email: credentials.email, password: credentials.password })
+            });
+            const json = await response.json();
 
-        if (json.login) {
-            localStorage.setItem('token', json.token);
-            navigate("/", { replace: true });
-            showAlert("Signed up Successfully", "success")
-        } else {
-            showAlert(json.error, "danger")
+            if (json.login) {
+                localStorage.setItem('token', json.token);
+                navigate("/", { replace: true });
+                showAlert("Signed up Successfully", "success")
+            } else {
+                showAlert(json.error, "danger")
+            }
+        } catch (error) {
+            showAlert("An error occurred", "danger");
+        } finally {
+            setIsLoading(false);
         }
     }
+
+    
     const onChange = (e) => {
         setCredentials({ ...credentials, [e.target.name]: e.target.value })
     }
@@ -53,7 +64,13 @@ const Login = () => {
                                 <label htmlFor="password" className="form-label">Password</label>
                                 <input type="password" className="form-control" value={credentials.password} onChange={onChange} name="password" id="password" />
                             </div>
-                            <button type="submit" className="btn btn-primary" disabled={credentials.email.length < 1 || credentials.password.length < 1} >Login</button>
+                            <button type="submit" className="btn btn-primary" disabled={credentials.email.length < 1 || credentials.password.length < 1 || isLoading}>
+                                {isLoading ? (
+                                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                ) : (
+                                    'Login'
+                                )}
+                            </button>
                             <p className="my-3">Don't have an account?<button type='button' className="btn btn-outline-primary mx-1" onClick={onClickSignup}>Sign up</button> today for free!!</p>
                         </form>
                     </div>

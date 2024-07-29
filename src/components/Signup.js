@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { AlertContext } from '../context/CreateContext';
 import Navbar from './Navbar';
 const Signup = () => {
+  
+  
   const host = "https://notebook-backend-bbj6.onrender.com"
+  const [isLoading, setIsLoading] = useState(false);
   
   const context = useContext(AlertContext);
   const { showAlert } = context;
@@ -12,6 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (credentials.password === credentials.cpassword) { 
+      setIsLoading(true);
       const response = await fetch(`${host}/api/auth/createuser`, {
         method: "POST",
         headers: {
@@ -20,6 +24,7 @@ const Signup = () => {
         body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password })
       });
       const json = await response.json();
+      setIsLoading(false);
 
       if (json.signedup) {
         localStorage.setItem('token',json.token);
@@ -66,7 +71,13 @@ const Signup = () => {
           <label htmlFor="cpassword" className="form-label">Confirm Password</label>
           <input type="password" className="form-control" onChange={onChange} name="cpassword" id="cpassword" />
         </div>
-        <button type="submit" className="btn btn-primary">Sign Up</button>
+        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+          {isLoading ? (
+            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          ) : (
+            'Sign Up'
+          )}
+        </button>
       </form>
       <div className='flex flex-row justify-center items-center'>
       <p className="my-3">Already have an account?

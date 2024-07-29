@@ -36,7 +36,7 @@ const Notes = () => {
 
     useEffect(() => {
         setSort(localStorage.getItem("order") || "Latest");
-    },[]);
+    },[sort]);
 
 
     const updateNote = (currentNote) => {
@@ -98,7 +98,7 @@ const Notes = () => {
 
         <>
             <AddNote />
-            <div className="container">
+            <div className="m-4 mb-6">
                 {/*modal 1 for edit note*/}
                 <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch demo modal
@@ -182,16 +182,16 @@ const Notes = () => {
                 </div>
                     {notes.length != 0 && <div className="my-3"><h2 className='text-3xl m-2'>Your Notes</h2>
                     <div className="d-flex flex-row-reverse">
-                        <button className="py-2 px-4 rounded-md bg-blue-600 hover:bg-blue-700 dropdown-toggle mx-3 text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort Notes: {sort}</button>
+                        <button className="rounded-md bg-blue-600 hover:bg-blue-700 dropdown-toggle p-2 sm:p-3 mx-3 dm text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort Notes: {sort}</button>
                             <ul className="dropdown-menu">
                                 <li role="button" className='dropdown-item py-2 px-4' id = "Latest" onClick={sortNotes}>Latest </li>
                                 <li role="button" className='dropdown-item py-2 px-4' id = "Oldest" onClick={sortNotes}>Oldest </li>
                             </ul>
-                        <button onClick={deleteAllNotesfn} className="py-2 px-4 rounded-md bg-red-600 hover:bg-red-700 mx-3 text-white">Delete All Notes</button>
+                        <button onClick={deleteAllNotesfn} className="mx-2 p-2 sm:p-3 rounded-md bg-red-600 hover:bg-red-700 text-white text-sm sm:text-base ">Delete All Notes</button>
                     </div>
                     </div>}
                         
-                        {notes.map((note) => {
+                        {notes.map((note) => { 
                             return <Noteitem key={note._id} updateNote={updateNote} deletecurnote={deletecurnote} note={note}/>
                         })}
                     </div>         
