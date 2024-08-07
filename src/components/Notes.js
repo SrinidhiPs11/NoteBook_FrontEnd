@@ -98,7 +98,7 @@ const Notes = () => {
 
         <>
             <AddNote />
-            <div className="m-4 mb-6">
+            <div className="container">
                 {/*modal 1 for edit note*/}
                 <button ref={ref} type="button" className="btn btn-primary d-none" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Launch demo modal
@@ -181,8 +181,8 @@ const Notes = () => {
                     </div>
                 </div>
                     {notes.length != 0 && <div className="my-3"><h2 className='text-3xl m-2'>Your Notes</h2>
-                    <div className="d-flex flex-row-reverse">
-                        <button className="rounded-md bg-blue-600 hover:bg-blue-700 dropdown-toggle p-2 sm:p-3 mx-3 dm text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort Notes: {sort}</button>
+                    <div className="flex sm:justify-end justify-between">
+                        <button className="rounded-md bg-blue-600 hover:bg-blue-700 dropdown-toggle p-2 sm:p-3 mx-2 dm text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">Sort Notes: {sort}</button>
                             <ul className="dropdown-menu">
                                 <li role="button" className='dropdown-item py-2 px-4' id = "Latest" onClick={sortNotes}>Latest </li>
                                 <li role="button" className='dropdown-item py-2 px-4' id = "Oldest" onClick={sortNotes}>Oldest </li>

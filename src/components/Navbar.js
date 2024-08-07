@@ -33,10 +33,10 @@ const Navbar = () => {
           <div className="hidden sm:ml-6 sm:flex sm:items-center">
             {!localStorage.getItem('token') ? (
               <div className="flex space-x-4">
-                <Link to="/login" className={`${location.pathname === "/login" ? "bg-blue-600 text-white border" : " hover:bg-blue-600 hover:text-white"} px-3 py-2 rounded-md text-sm font-medium`}>
+                <Link to="/login" className={`${location.pathname === "/login" ? "bg-blue-600 text-white" : " hover:bg-blue-600 hover:text-white "} px-3 py-2 rounded-md text-sm font-medium border-2`}>
                   Login
                 </Link>
-                <Link to="/signup" className={`${location.pathname === "/signup" ? "bg-blue-600 text-white" : " hover:bg-blue-600 hover:text-white"} px-3 py-2 rounded-md text-sm font-medium`}>
+                <Link to="/signup" className={`${location.pathname === "/signup" ? "bg-blue-600 text-white" : " hover:bg-blue-600 hover:text-white hover:border-0"} px-3 py-2 rounded-md text-sm font-medium border-2`}>
                   Signup
                 </Link>
               </div>

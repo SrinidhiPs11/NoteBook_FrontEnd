@@ -6,7 +6,7 @@ const About = () => {
     return (
         <>
             <Navbar />
-            <div className='h-screen bg-gray-100 flex justify-between flex-col '>
+            <div className='h-screen  flex justify-between flex-col '>
             <div className="px-4 py-8">
                 <h1 className="text-4xl font-bold mb-6">About Notebook</h1>
                 <p className="mb-6">Notebook is a powerful and user-friendly note-taking application designed to help you organize your thoughts, ideas, and information efficiently.</p>
@@ -22,7 +22,7 @@ const About = () => {
                     <li>More amazing feature will be added so stay tuned!</li>
                 </ul>
                          
-                <Link to="/" className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Back to Home</Link>
+                <Link to="/" className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Back to Home</Link>
             </div>
             <footer className="bg-gray-800 text-white py-4">
                 <div className="container mx-auto text-center">
